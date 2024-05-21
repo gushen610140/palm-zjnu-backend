@@ -1,4 +1,4 @@
-package icu.sunway.palmzjnubackend.pojo;
+package icu.sunway.palmzjnubackend.type;
 
 public enum Status {
     SUCCESS,
