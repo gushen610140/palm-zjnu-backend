@@ -24,7 +24,7 @@ public class OrdersPojo {
     private String orderTime;
 
     @TableField(value = "total_price")
-    private double totalPrice;
+    private Double totalPrice;
 
     @TableField(value = "status")
     private String status;

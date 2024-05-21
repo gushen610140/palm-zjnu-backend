@@ -23,10 +23,13 @@ public class ProductPojo {
     @TableField(value = "price")
     private Double price;
 
+    @TableField(value = "stock")
+    private Integer stock;
+
     @TableField(value = "description")
     private String description;
 
     @TableField(value = "category_id")
-    private String categoryId;
+    private Integer categoryId;
 
 }

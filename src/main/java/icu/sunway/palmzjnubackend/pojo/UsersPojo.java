@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @TableName(value = "users")
 public class UsersPojo {
 
-    @TableId(value = "user_id", type = IdType.AUTO)
+    @TableId(value = "user_id", type = IdType.ASSIGN_ID)
     private Integer userId;
 
     @TableField(value = "username")
