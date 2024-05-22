@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @TableName(value = "product")
 public class ProductPojo {
 
-    @TableId(value = "product_id", type = IdType.AUTO)
+    @TableId(value = "product_id", type = IdType.ASSIGN_ID)
     private Integer productId;
 
     @TableField(value = "name")
