@@ -1,5 +1,6 @@
 package icu.sunway.palmzjnubackend.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import icu.sunway.palmzjnubackend.dao.MomentDao;
 import icu.sunway.palmzjnubackend.pojo.MomentPojo;
@@ -16,8 +17,13 @@ public class MomentService {
     }
 
     public List<MomentPojo> getMomentsByPage(int current, int size) {
-        return momentDao.selectPage(new Page<>(current, size), null).getRecords();
+        QueryWrapper<MomentPojo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByDesc("date");
+        return momentDao.selectPage(new Page<>(current, size), queryWrapper).getRecords();
     }
 
+    public void addMoment(MomentPojo moment) {
+        momentDao.insert(moment);
+    }
 
 }
