@@ -19,3 +19,6 @@ mybatis-plus:
     db-config:
       logic-delete-value: 1
       logic-not-delete-value: 0
+
+picture-path:
+  dir: E:/Projects/repos/palm-zjnu-backend/pictures/
