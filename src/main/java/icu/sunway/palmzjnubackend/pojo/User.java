@@ -1,6 +1,5 @@
 package icu.sunway.palmzjnubackend.pojo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -13,8 +12,8 @@ import lombok.NoArgsConstructor;
 @TableName(value = "users")
 public class User {
 
-    @TableId(type = IdType.ASSIGN_UUID)
-    private Integer userId;
+    @TableId
+    private String userId;
 
     private String userName;
 
