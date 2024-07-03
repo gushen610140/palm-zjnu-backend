@@ -1,7 +1,6 @@
 package icu.sunway.palmzjnubackend.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -12,21 +11,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName(value = "users")
-public class UsersPojo {
+public class User {
 
-    @TableId(value = "user_id", type = IdType.ASSIGN_ID)
+    @TableId(type = IdType.ASSIGN_UUID)
     private Integer userId;
 
-    @TableField(value = "username")
-    private String username;
+    private String userName;
 
-    @TableField(value = "password")
-    private String password;
-
-    @TableField(value = "phone")
-    private String phone;
-
-    @TableField(value = "email")
-    private String email;
+    private String userAvatar;
 
 }

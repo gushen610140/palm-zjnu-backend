@@ -1,8 +1,7 @@
 package icu.sunway.palmzjnubackend.service;
 
-import icu.sunway.palmzjnubackend.dao.UsersDao;
-import icu.sunway.palmzjnubackend.pojo.UsersPojo;
-import icu.sunway.palmzjnubackend.type.Status;
+import icu.sunway.palmzjnubackend.dao.UserMapper;
+import icu.sunway.palmzjnubackend.pojo.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,22 +9,17 @@ import java.util.List;
 @Service
 public class UsersService {
 
-    private final UsersDao usersDao;
+    private final UserMapper userMapper;
 
-    public UsersService(UsersDao usersDao) {
-        this.usersDao = usersDao;
+    public UsersService(UserMapper userMapper) {
+        this.userMapper = userMapper;
     }
 
-    public List<UsersPojo> getAllUsers() {
-        return usersDao.selectList(null);
+    public List<User> getAllUsers() {
+        return userMapper.selectList(null);
     }
 
-    public Status addUser(String username, String password, String phone, String email) {
-        UsersPojo usersPojo = new UsersPojo(null, username, password, phone, email);
-        if (usersDao.insert(usersPojo) > 0) {
-            return Status.SUCCESS;
-        } else {
-            return Status.ERROR;
-        }
+    public void addUser(User user) {
+        userMapper.insert(user);
     }
 }

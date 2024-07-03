@@ -1,13 +1,8 @@
 package icu.sunway.palmzjnubackend.controller;
 
-import icu.sunway.palmzjnubackend.pojo.UsersPojo;
+import icu.sunway.palmzjnubackend.pojo.User;
 import icu.sunway.palmzjnubackend.service.UsersService;
-import icu.sunway.palmzjnubackend.type.PostedUser;
-import icu.sunway.palmzjnubackend.type.Status;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,13 +16,13 @@ public class UsersController {
     }
 
     @RequestMapping(value = "api/users", method = RequestMethod.GET)
-    public List<UsersPojo> getAllUsers() {
+    public List<User> getAllUsers() {
         return usersService.getAllUsers();
     }
 
-    @RequestMapping(value = "api/user", method = RequestMethod.POST)
-    public Status addUser(@RequestBody PostedUser user) {
-        return usersService.addUser(user.getUsername(), user.getPassword(), user.getPhone(), user.getEmail());
+    @PostMapping(value = "api/user")
+    public void addUser(@RequestBody User user) {
+        usersService.addUser(user);
     }
 
 
