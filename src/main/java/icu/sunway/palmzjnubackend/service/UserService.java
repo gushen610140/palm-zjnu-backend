@@ -28,10 +28,19 @@ public class UserService {
     public Result<User> login(Token token) {
         User user = userMapper.selectById(token.getOpenid());
         if (user == null) {
-            User newUser = new User(token.getOpenid(), "默认用户", "/");
+            User newUser = new User(
+                    token.getOpenid(),
+                    "默认昵称",
+                    "http://127.0.0.1:8080/api/images/avatars/default.png"
+            );
             userMapper.insert(newUser);
             return new Result<>(201, "user register", newUser);
         }
         return new Result<>(200, "user login", user);
+    }
+
+    public Result<User> getUserInfo(Token token) {
+        User user = userMapper.selectById(token.getOpenid());
+        return new Result<>(200, "success", user);
     }
 }

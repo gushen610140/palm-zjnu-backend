@@ -17,18 +17,23 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "api/users", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/users", method = RequestMethod.GET)
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @PostMapping(value = "api/user")
+    @PostMapping(value = "/api/user")
     public void addUser(@RequestBody User user) {
         userService.addUser(user);
     }
 
-    @PostMapping(value = "api/user/login")
+    @PostMapping(value = "/api/user/login")
     public Result<User> login(@RequestBody Token token) {
         return userService.login(token);
+    }
+
+    @PostMapping(value = "/api/user/info")
+    public Result<User> getUserInfo(@RequestBody Token token) {
+        return userService.getUserInfo(token);
     }
 }
