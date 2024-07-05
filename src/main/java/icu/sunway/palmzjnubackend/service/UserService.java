@@ -31,7 +31,9 @@ public class UserService {
             User newUser = new User(
                     token.getOpenid(),
                     "默认昵称",
-                    "http://127.0.0.1:8080/api/images/avatars/default.png"
+                    "http://127.0.0.1:8080/api/images/avatars/default.png",
+                    null,
+                    token.getSessionKey()
             );
             userMapper.insert(newUser);
             return new Result<>(201, "user register", newUser);

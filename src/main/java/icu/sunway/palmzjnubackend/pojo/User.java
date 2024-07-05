@@ -19,4 +19,7 @@ public class User {
 
     private String userAvatar;
 
+    private String userStudentNumber;
+
+    private String session;
 }
