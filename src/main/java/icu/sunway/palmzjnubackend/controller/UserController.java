@@ -36,4 +36,14 @@ public class UserController {
     public Result<User> getUserInfo(@RequestBody Token token) {
         return userService.getUserInfo(token);
     }
+
+    @PutMapping(value = "/api/user/avatar")
+    public Result<String> updateUserAvatar(@RequestBody User user) {
+        return userService.updateUserAvatarInfo(user);
+    }
+
+    @PutMapping(value = "/api/user/name")
+    public Result<String> updateUserNameInfo(@RequestBody User user) {
+        return userService.updateUserNameInfo(user);
+    }
 }

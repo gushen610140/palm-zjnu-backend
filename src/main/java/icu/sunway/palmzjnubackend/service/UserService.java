@@ -1,5 +1,6 @@
 package icu.sunway.palmzjnubackend.service;
 
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import icu.sunway.palmzjnubackend.dao.UserMapper;
 import icu.sunway.palmzjnubackend.pojo.User;
 import icu.sunway.palmzjnubackend.type.Result;
@@ -44,5 +45,19 @@ public class UserService {
     public Result<User> getUserInfo(Token token) {
         User user = userMapper.selectById(token.getOpenid());
         return new Result<>(200, "success", user);
+    }
+
+    public Result<String> updateUserAvatarInfo(User user) {
+        UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("user_id", user.getUserId()).set("user_avatar", user.getUserAvatar());
+        userMapper.update(null, updateWrapper);
+        return new Result<>(200, "success", "update avatar successfully");
+    }
+
+    public Result<String> updateUserNameInfo(User user) {
+        UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("user_id", user.getUserId()).set("user_name", user.getUserName());
+        userMapper.update(null, updateWrapper);
+        return new Result<>(200, "success", "update name successfully");
     }
 }

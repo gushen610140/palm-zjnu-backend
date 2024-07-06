@@ -2,6 +2,7 @@ package icu.sunway.palmzjnubackend.controller;
 
 import icu.sunway.palmzjnubackend.pojo.MomentPojo;
 import icu.sunway.palmzjnubackend.service.MomentService;
+import icu.sunway.palmzjnubackend.type.Result;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,8 +19,9 @@ public class MomentController {
     }
 
     @GetMapping(value = "/api/moments")
-    public List<MomentPojo> getMomentsByPage(int current, int size) {
-        return momentService.getMomentsByPage(current, size);
+    public Result<List<MomentPojo>> getMomentsByPage(int current, int size) {
+        List<MomentPojo> moments = momentService.getMomentsByPage(current, size);
+        return new Result<>(200, "success", moments);
     }
 
     @PostMapping("/api/moments")
