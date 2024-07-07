@@ -33,7 +33,9 @@ public class UserService {
                     token.getOpenid(),
                     "默认昵称",
                     "http://127.0.0.1:8080/api/images/avatars/default.png",
-                    null,
+                    "",
+                    "未知",
+                    "",
                     token.getSessionKey()
             );
             userMapper.insert(newUser);
@@ -59,5 +61,26 @@ public class UserService {
         updateWrapper.eq("user_id", user.getUserId()).set("user_name", user.getUserName());
         userMapper.update(null, updateWrapper);
         return new Result<>(200, "success", "update name successfully");
+    }
+
+    public Result<String> updateUserGenderInfo(User user) {
+        UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("user_id", user.getUserId()).set("gender", user.getGender());
+        userMapper.update(null, updateWrapper);
+        return new Result<>(200, "success", "update gender successfully");
+    }
+
+    public Result<String> updateUserStudentNumberInfo(User user) {
+        UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("user_id", user.getUserId()).set("user_student_number", user.getUserStudentNumber());
+        userMapper.update(null, updateWrapper);
+        return new Result<>(200, "success", "update student number successfully");
+    }
+
+    public Result<String> updateWechatNumberInfo(User user) {
+        UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("user_id", user.getUserId()).set("wechat_number", user.getWechatNumber());
+        userMapper.update(null, updateWrapper);
+        return new Result<>(200, "success", "update wechat number successfully");
     }
 }

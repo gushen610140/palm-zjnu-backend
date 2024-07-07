@@ -21,5 +21,9 @@ public class User {
 
     private String userStudentNumber;
 
+    private String gender;
+
+    private String wechatNumber;
+
     private String session;
 }
