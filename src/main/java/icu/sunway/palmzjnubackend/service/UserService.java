@@ -51,7 +51,7 @@ public class UserService {
 
     public Result<String> updateUserAvatarInfo(User user) {
         UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
-        updateWrapper.eq("user_id", user.getUserId()).set("user_avatar", user.getUserAvatar());
+        updateWrapper.eq("user_id", user.getUserId()).set("user_avatar", "http://127.0.0.1:8080/api/images/" + user.getUserAvatar());
         userMapper.update(null, updateWrapper);
         return new Result<>(200, "success", "update avatar successfully");
     }
