@@ -49,16 +49,16 @@ public class UserController {
 
     @PutMapping(value = "/api/user/gender")
     public Result<String> updateUserGenderInfo(@RequestBody User user) {
-        return userService.updateUserNameInfo(user);
+        return userService.updateUserGenderInfo(user);
     }
 
     @PutMapping(value = "/api/user/student_number")
     public Result<String> updateUserStudentNumberInfo(@RequestBody User user) {
-        return userService.updateUserNameInfo(user);
+        return userService.updateUserStudentNumberInfo(user);
     }
 
     @PutMapping(value = "/api/user/wechat_number")
     public Result<String> updateWechatNumberInfo(@RequestBody User user) {
-        return userService.updateUserNameInfo(user);
+        return userService.updateWechatNumberInfo(user);
     }
 }
