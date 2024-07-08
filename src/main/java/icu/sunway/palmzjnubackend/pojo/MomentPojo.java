@@ -28,7 +28,7 @@ public class MomentPojo {
 
     private String content;
 
-    private List<String> images;
+    private String images;
 
     private Integer likes;
 
