@@ -18,11 +18,13 @@ public class CommentPojo {
 
     private String userName;
 
-    private String userAvatar;
-
     private String date;
 
     private String content;
 
-    private Integer likes;
+    private String toUserId;
+
+    private String toUserName;
+
+    private String momentId;
 }

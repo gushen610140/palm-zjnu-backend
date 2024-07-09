@@ -30,7 +30,7 @@ public class MomentPojo {
 
     private String images;
 
-    private Integer likes;
+    private String likes;
 
     private List<CommentPojo> comments;
 
