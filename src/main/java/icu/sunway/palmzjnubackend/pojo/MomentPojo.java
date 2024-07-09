@@ -7,8 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,6 +30,6 @@ public class MomentPojo {
 
     private String likes;
 
-    private List<CommentPojo> comments;
+    private String comments;
 
 }

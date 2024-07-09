@@ -45,15 +45,15 @@ public class MomentService {
         return new Result<>(200, "success", newLikes);
     }
 
-    public Result<String> addMomentComment(CommentPojo commentPojo) {
+    public Result<MomentPojo> addMomentComment(CommentPojo commentPojo) {
         QueryWrapper<MomentPojo> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("id", commentPojo.getMomentId());
         MomentPojo moment = momentDao.selectOne(queryWrapper);
-        List<CommentPojo> momentComments = moment.getComments();
+        JSONArray momentComments = JSON.parseArray(moment.getComments());
         momentComments.add(commentPojo);
-        moment.setComments(momentComments);
+        moment.setComments(JSON.toJSONString(momentComments));
         momentDao.updateById(moment);
-        return new Result<>(200, "success", "评论成功");
+        return new Result<>(200, "success", moment);
     }
 
 }

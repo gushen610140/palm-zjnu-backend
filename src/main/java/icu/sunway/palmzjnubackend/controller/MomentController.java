@@ -33,7 +33,7 @@ public class MomentController {
     }
 
     @PostMapping("/api/moments/comments/add")
-    public Result<String> addMomentComment(@RequestBody CommentPojo comment) {
+    public Result<MomentPojo> addMomentComment(@RequestBody CommentPojo comment) {
         return momentService.addMomentComment(comment);
     }
 }
