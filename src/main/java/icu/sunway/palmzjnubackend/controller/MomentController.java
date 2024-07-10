@@ -1,7 +1,7 @@
 package icu.sunway.palmzjnubackend.controller;
 
-import icu.sunway.palmzjnubackend.pojo.CommentPojo;
-import icu.sunway.palmzjnubackend.pojo.MomentPojo;
+import icu.sunway.palmzjnubackend.model.Comment;
+import icu.sunway.palmzjnubackend.model.Moment;
 import icu.sunway.palmzjnubackend.service.MomentService;
 import icu.sunway.palmzjnubackend.type.Result;
 import org.springframework.web.bind.annotation.*;
@@ -17,23 +17,22 @@ public class MomentController {
     }
 
     @GetMapping(value = "/api/moments")
-    public Result<List<MomentPojo>> getMomentsByPage(int current, int size) {
-        List<MomentPojo> moments = momentService.getMomentsByPage(current, size);
-        return new Result<>(200, "success", moments);
+    public Result<List<Moment>> getMoments(int current, int size) {
+        return momentService.getMoments(current, size);
     }
 
-    @PostMapping("/api/moments")
-    public void addMoment(@RequestBody MomentPojo moment) {
-        momentService.addMoment(moment);
+    @PostMapping("/api/moment")
+    public Result<Moment> postMoment(@RequestBody Moment moment) {
+        return momentService.postMoment(moment);
     }
 
-    @PutMapping("/api/moments/likes/add")
-    public Result<String> addMomentLike(@RequestParam String momentId, @RequestParam String userId) {
-        return momentService.addLikes(momentId, userId);
+    @PutMapping("/api/moment/likes")
+    public Result<String> putMomentLikes(@RequestParam String momentId, @RequestParam String userId) {
+        return momentService.putMomentLikes(momentId, userId);
     }
 
-    @PostMapping("/api/moments/comments/add")
-    public Result<MomentPojo> addMomentComment(@RequestBody CommentPojo comment) {
-        return momentService.addMomentComment(comment);
+    @PutMapping("/api/moment/comments")
+    public Result<Moment> putMomentComments(@RequestBody Comment comment) {
+        return momentService.putMomentComments(comment);
     }
 }

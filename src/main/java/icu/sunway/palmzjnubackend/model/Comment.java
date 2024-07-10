@@ -1,4 +1,4 @@
-package icu.sunway.palmzjnubackend.pojo;
+package icu.sunway.palmzjnubackend.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommentPojo {
+public class Comment {
 
     @TableId(type = IdType.ASSIGN_UUID)
     private String id;

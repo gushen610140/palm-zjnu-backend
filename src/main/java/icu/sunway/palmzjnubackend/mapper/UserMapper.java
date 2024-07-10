@@ -1,7 +1,7 @@
-package icu.sunway.palmzjnubackend.dao;
+package icu.sunway.palmzjnubackend.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import icu.sunway.palmzjnubackend.pojo.User;
+import icu.sunway.palmzjnubackend.model.User;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

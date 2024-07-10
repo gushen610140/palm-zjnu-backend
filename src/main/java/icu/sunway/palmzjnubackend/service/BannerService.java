@@ -1,20 +1,21 @@
 package icu.sunway.palmzjnubackend.service;
 
-import icu.sunway.palmzjnubackend.dao.BannerDao;
-import icu.sunway.palmzjnubackend.pojo.BannerPojo;
+import icu.sunway.palmzjnubackend.mapper.BannerMapper;
+import icu.sunway.palmzjnubackend.model.Banner;
+import icu.sunway.palmzjnubackend.type.Result;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class BannerService {
-    private final BannerDao bannerDao;
+    private final BannerMapper bannerMapper;
 
-    public BannerService(BannerDao bannerDao) {
-        this.bannerDao = bannerDao;
+    public BannerService(BannerMapper bannerMapper) {
+        this.bannerMapper = bannerMapper;
     }
 
-    public List<BannerPojo> getAllBanners() {
-        return bannerDao.selectList(null);
+    public Result<List<Banner>> getBanners() {
+        return new Result<>(200, "success", bannerMapper.selectList(null));
     }
 }

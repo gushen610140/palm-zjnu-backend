@@ -1,4 +1,4 @@
-package icu.sunway.palmzjnubackend.pojo;
+package icu.sunway.palmzjnubackend.model;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;

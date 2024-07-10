@@ -1,7 +1,8 @@
 package icu.sunway.palmzjnubackend.controller;
 
-import icu.sunway.palmzjnubackend.pojo.BannerPojo;
+import icu.sunway.palmzjnubackend.model.Banner;
 import icu.sunway.palmzjnubackend.service.BannerService;
+import icu.sunway.palmzjnubackend.type.Result;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +17,7 @@ public class BannerController {
     }
 
     @GetMapping("/api/banners")
-    public List<BannerPojo> getAllBanners() {
-        return bannerService.getAllBanners();
+    public Result<List<Banner>> getBanners() {
+        return bannerService.getBanners();
     }
 }

@@ -11,13 +11,13 @@ import java.io.File;
 import java.io.IOException;
 
 @RestController
-public class uploadImageController {
+public class OtherController {
 
     @Value("${picture-path.dir}")
     private String picturePath;
 
-    @PostMapping("/api/images/upload")
-    public Result<String> uploadImage(@RequestParam("file") MultipartFile file) {
+    @PostMapping("/api/image")
+    public Result<String> postImage(@RequestParam("file") MultipartFile file) {
         try {
             String fileName = file.getOriginalFilename();
             String filePath = picturePath + fileName;
