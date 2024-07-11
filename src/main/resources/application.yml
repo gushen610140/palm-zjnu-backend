@@ -4,9 +4,9 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: "root"
-    url: jdbc:mysql://127.0.0.1:3306/palm_zjnu
+    username: remote
+    password: "remote"
+    url: jdbc:mysql://sunway.icu:3306/palm_zjnu
 
 server:
   port: 8080
@@ -22,3 +22,6 @@ mybatis-plus:
 
 picture-path:
   dir: E:/Projects/repos/palm-zjnu-backend/pictures/
+#  dir: /root/images/
+
+dev-server: http://sunway.icu:8080
