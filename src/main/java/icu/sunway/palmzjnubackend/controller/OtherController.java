@@ -1,30 +1,38 @@
 package icu.sunway.palmzjnubackend.controller;
 
-import icu.sunway.palmzjnubackend.type.Result;
-import org.springframework.beans.factory.annotation.Value;
+import icu.sunway.palmzjnubackend.model.Result;
+import icu.sunway.palmzjnubackend.utils.AliOssUtil;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 @RestController
 public class OtherController {
 
-    @Value("${picture-path.dir}")
-    private String picturePath;
+    private final AliOssUtil aliOssUtil;
 
-    @PostMapping("/api/image")
-    public Result<String> postImage(@RequestParam("file") MultipartFile file) {
+    public OtherController(AliOssUtil aliOssUtil) {
+        this.aliOssUtil = aliOssUtil;
+    }
+
+    @PostMapping("/api/upload")
+    //请求中要携带上需要上传的文件
+    public Result<String> saveOss(MultipartFile file) {
         try {
-            String fileName = file.getOriginalFilename();
-            String filePath = picturePath + fileName;
-            file.transferTo(new File(filePath));
-            return new Result<>(200, "success", fileName);
+            // 获取原始的文件名
+            String originalFilename = file.getOriginalFilename();
+            // 在oss中存储名字就是UUID + 文件的后缀名
+            String objectName = null;
+            if (originalFilename != null) {
+                objectName = UUID.randomUUID() + originalFilename.substring(originalFilename.lastIndexOf("."));
+            }
+            String resultURL = aliOssUtil.upload(file.getBytes(), objectName);
+            return new Result<>(200, "success", resultURL);
         } catch (IOException e) {
-            return new Result<>(400, "fail", e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 }

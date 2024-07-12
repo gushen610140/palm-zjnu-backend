@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import icu.sunway.palmzjnubackend.mapper.MomentMapper;
 import icu.sunway.palmzjnubackend.model.Comment;
 import icu.sunway.palmzjnubackend.model.Moment;
-import icu.sunway.palmzjnubackend.type.Result;
+import icu.sunway.palmzjnubackend.model.Result;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -2,7 +2,7 @@ package icu.sunway.palmzjnubackend.service;
 
 import icu.sunway.palmzjnubackend.mapper.BannerMapper;
 import icu.sunway.palmzjnubackend.model.Banner;
-import icu.sunway.palmzjnubackend.type.Result;
+import icu.sunway.palmzjnubackend.model.Result;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

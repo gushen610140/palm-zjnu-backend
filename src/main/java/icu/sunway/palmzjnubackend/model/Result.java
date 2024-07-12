@@ -1,4 +1,4 @@
-package icu.sunway.palmzjnubackend.type;
+package icu.sunway.palmzjnubackend.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,8 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Token implements Serializable {
-    private String openid;
-    private String sessionKey;
+public class Result<T> implements Serializable {
+    private Integer code;
+    private String msg;
+    private T data;
 }

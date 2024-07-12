@@ -2,8 +2,8 @@ package icu.sunway.palmzjnubackend.controller;
 
 import icu.sunway.palmzjnubackend.model.Comment;
 import icu.sunway.palmzjnubackend.model.Moment;
+import icu.sunway.palmzjnubackend.model.Result;
 import icu.sunway.palmzjnubackend.service.MomentService;
-import icu.sunway.palmzjnubackend.type.Result;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

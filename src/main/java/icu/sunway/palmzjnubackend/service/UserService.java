@@ -1,10 +1,9 @@
 package icu.sunway.palmzjnubackend.service;
 
 import icu.sunway.palmzjnubackend.mapper.UserMapper;
+import icu.sunway.palmzjnubackend.model.Result;
+import icu.sunway.palmzjnubackend.model.Token;
 import icu.sunway.palmzjnubackend.model.User;
-import icu.sunway.palmzjnubackend.type.Result;
-import icu.sunway.palmzjnubackend.type.Token;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,9 +14,6 @@ public class UserService {
     public UserService(UserMapper userMapper) {
         this.userMapper = userMapper;
     }
-
-    @Value("${dev-server}")
-    private String devServer;
 
     public Result<User> postUser(User user) {
         userMapper.insert(user);
@@ -30,7 +26,7 @@ public class UserService {
             User newUser = new User(
                     token.getOpenid(),
                     "默认昵称",
-                    devServer + "/api/image/avatars/default.png",
+                    "",
                     "",
                     "未知",
                     "",

@@ -1,9 +1,9 @@
 package icu.sunway.palmzjnubackend.controller;
 
+import icu.sunway.palmzjnubackend.model.Result;
+import icu.sunway.palmzjnubackend.model.Token;
 import icu.sunway.palmzjnubackend.model.User;
 import icu.sunway.palmzjnubackend.service.UserService;
-import icu.sunway.palmzjnubackend.type.Result;
-import icu.sunway.palmzjnubackend.type.Token;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
