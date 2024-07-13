@@ -2,6 +2,7 @@ package icu.sunway.palmzjnubackend.controller;
 
 import icu.sunway.palmzjnubackend.model.Result;
 import icu.sunway.palmzjnubackend.utils.AliOssUtil;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,5 +35,10 @@ public class OtherController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @GetMapping("/api/secret")
+    public Result<String> getSecret() {
+        return new Result<>(200, "success", "wx622113ff58e2b46b,360464608fc569e5867a35e4cf5bb309");
     }
 }
