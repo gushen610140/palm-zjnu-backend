@@ -6,6 +6,7 @@ import icu.sunway.palmzjnubackend.model.User;
 import icu.sunway.palmzjnubackend.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 public class UserController {
 
@@ -33,6 +34,26 @@ public class UserController {
     @PutMapping(value = "/api/user")
     public Result<User> putUser(@RequestBody User user) {
         return userService.putUser(user);
+    }
+
+    @GetMapping(value = "/api/user/email")
+    public Result<String> postUserEmail(String email) {
+        return userService.postUserEmail(email);
+    }
+
+    @GetMapping(value = "/api/user/check")
+    public Result<Boolean> checkUser(String email) {
+        return userService.checkUser(email);
+    }
+
+    @GetMapping(value = "/api/check/email")
+    public Result<Boolean> checkUserEmail(String email, String code) {
+        return userService.checkUserEmail(email, code);
+    }
+
+    @GetMapping(value = "/api/user/register")
+    public Result<User> registerUser(String email) {
+        return userService.registerUser(email);
     }
 
 }
