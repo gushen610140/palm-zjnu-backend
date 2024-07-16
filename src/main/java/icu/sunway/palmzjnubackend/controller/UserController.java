@@ -1,7 +1,6 @@
 package icu.sunway.palmzjnubackend.controller;
 
 import icu.sunway.palmzjnubackend.model.Result;
-import icu.sunway.palmzjnubackend.model.Token;
 import icu.sunway.palmzjnubackend.model.User;
 import icu.sunway.palmzjnubackend.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -21,9 +20,9 @@ public class UserController {
         return userService.postUser(user);
     }
 
-    @PostMapping(value = "/api/user/login")
-    public Result<User> postUserLogin(@RequestBody Token token) {
-        return userService.postUserLogin(token);
+    @GetMapping(value = "/api/user/login")
+    public Result<User> login(String email, String password) {
+        return userService.login(email, password);
     }
 
     @GetMapping(value = "/api/user/info")

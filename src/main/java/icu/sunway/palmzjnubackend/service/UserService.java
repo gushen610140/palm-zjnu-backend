@@ -3,7 +3,6 @@ package icu.sunway.palmzjnubackend.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import icu.sunway.palmzjnubackend.mapper.UserMapper;
 import icu.sunway.palmzjnubackend.model.Result;
-import icu.sunway.palmzjnubackend.model.Token;
 import icu.sunway.palmzjnubackend.model.User;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -65,23 +64,17 @@ public class UserService {
         return new Result<>(200, "success", email);
     }
 
-    public Result<User> postUserLogin(Token token) {
-        User user = userMapper.selectById(token.getOpenid());
+    public Result<User> login(String email, String password) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("email", email);
+        User user = userMapper.selectOne(queryWrapper);
         if (user == null) {
-            User newUser = new User(
-                    token.getOpenid(),
-                    "默认昵称",
-                    "",
-                    "",
-                    "未知",
-                    "",
-                    token.getSessionKey(),
-                    ""
-            );
-            userMapper.insert(newUser);
-            return new Result<>(201, "注册成功", newUser);
+            return new Result<>(400, "user not exist", null);
         }
-        return new Result<>(200, "登录成功", user);
+        if (!user.getPassword().equals(password)) {
+            return new Result<>(400, "密码错误", null);
+        }
+        return new Result<>(200, "success", user);
     }
 
     public Result<User> getUserInfo(String sessionKey, String openid) {

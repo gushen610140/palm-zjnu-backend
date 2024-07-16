@@ -25,7 +25,7 @@ public class User {
 
     private String wechatNumber;
 
-    private String session;
+    private String password;
 
     private String email;
 }
