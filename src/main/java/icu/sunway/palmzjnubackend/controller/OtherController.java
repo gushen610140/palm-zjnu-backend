@@ -43,4 +43,9 @@ public class OtherController {
     public Result<String> getSecret() {
         return new Result<>(200, "success", "wx622113ff58e2b46b,360464608fc569e5867a35e4cf5bb309");
     }
+
+    @GetMapping("/api/version")
+    public Result<String> getVersion() {
+        return new Result<>(200, "success", "v1.0.1");
+    }
 }
